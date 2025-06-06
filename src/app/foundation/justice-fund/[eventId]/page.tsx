@@ -1,3 +1,9 @@
+import { BackgroundBlur } from "@/shared/background-blur";
+import { EventContent } from "./content";
+
+// compat cloudflare worker
+export const runtime = "edge";
+
 export default async function EventDetailPage({
   params,
 }: {
@@ -5,14 +11,14 @@ export default async function EventDetailPage({
 }) {
   const { eventId } = await params;
 
-  console.log("Event ID:", eventId);
-
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
-      <h1 className="text-3xl font-bold">Event Detail Page</h1>
-      <p className="mt-4 text-lg">
-        This is the event detail page for event ID: {eventId}.
-      </p>
+    <div className="flex relative flex-col items-center ">
+      <BackgroundBlur
+        top={-525}
+        right={-115}
+        style={{ top: "-525px", right: "-115px" }}
+      />
+      <EventContent eventId={eventId} />
     </div>
   );
 }
