@@ -373,6 +373,7 @@ export default function Home() {
                   <EventCard
                     id={item.id}
                     key={item.id}
+                    // @ts-expect-error fix when backend is ready
                     src={item.cover}
                     title={item.title}
                     description={item.description}

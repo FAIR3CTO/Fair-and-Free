@@ -157,6 +157,7 @@ export default function MobileEventsPage() {
                   <MobileEventCard
                     key={event.id}
                     id={event.id}
+                    // @ts-expect-error fix when backend is ready
                     src={event.cover}
                     title={event.title}
                     description={event.description}
