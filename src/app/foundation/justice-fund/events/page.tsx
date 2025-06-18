@@ -44,6 +44,15 @@ export default function EventPage() {
 
   const { data: events = [
     {
+      id: 3,
+      title: "Who Owns Your Digital Memory?",
+      description: "A Fair3 AMA Recap: Digital Selves, AI Ethics, and the Reconfiguration of Power in Web3.",
+      cover: AMA_IMG,
+      enable: true,
+      selected: false,
+      homeSelected: true,
+    },
+    {
       id: 1,
       title: "Fair3 x Fourmeme: Meme for Justice, Fair for All",
       description: `At Fair3, we believe that technology should be a tool for innovation, not a means for monopolies.`,
@@ -60,15 +69,6 @@ export default function EventPage() {
       enable: true,
       selected: true,
       homeSelected: false,
-    },
-    {
-      id: 3,
-      title: "Who Owns Your Digital Memory?",
-      description: "A Fair3 AMA Recap: Digital Selves, AI Ethics, and the Reconfiguration of Power in Web3.",
-      cover: AMA_IMG,
-      enable: true,
-      selected: false,
-      homeSelected: true,
     },
   ] } = data || {};
 
