@@ -12,9 +12,6 @@ import { EventListItem } from "../event-list-item";
 import { fetcher } from "@/shared/fetcher";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Toaster } from "@/components/ui/sonner";
-import AMA_IMG from "../../../../../public/images/ama.png";
-import BITGET_IMG from "../../../../../public/images/bitget.png";
-import FOURMEME_IMG from "../../../../../public/images/fourmeme.png";
 
 import type { EventResponse } from "@/shared/types";
 
@@ -25,52 +22,24 @@ export default function EventPage() {
     fetcher
   );
 
-  // if (isLoading) {
-  //   return (
-  //     <div className="flex flex-col items-center">
-  //       <div className="2xl:w-[1440px] flex w-full mt-16">
-  //         <div className="flex gap-7">
-  //           <Skeleton className="h-[286px] w-[384px] rounded-xl" />
-  //           <div className="space-y-10">
-  //             <Skeleton className="h-12 w-[400px] mt-5" />
-  //             <Skeleton className="h-12 w-[600px]" />
-  //             <Skeleton className="h-12 w-[140px]" />
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // }
+  if (isLoading) {
+    return (
+      <div className="flex flex-col items-center">
+        <div className="2xl:w-[1440px] flex w-full mt-16">
+          <div className="flex gap-7">
+            <Skeleton className="h-[286px] w-[384px] rounded-xl" />
+            <div className="space-y-10">
+              <Skeleton className="h-12 w-[400px] mt-5" />
+              <Skeleton className="h-12 w-[600px]" />
+              <Skeleton className="h-12 w-[140px]" />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
-  const { data: events = [
-    {
-      id: 3,
-      title: "Who Owns Your Digital Memory?",
-      description: "A Fair3 AMA Recap: Digital Selves, AI Ethics, and the Reconfiguration of Power in Web3.",
-      cover: AMA_IMG,
-      enable: true,
-      selected: false,
-      homeSelected: true,
-    },
-    {
-      id: 1,
-      title: "Fair3 x Fourmeme: Meme for Justice, Fair for All",
-      description: `At Fair3, we believe that technology should be a tool for innovation, not a means for monopolies.`,
-      cover: FOURMEME_IMG,
-      enable: true,
-      selected: false,
-      homeSelected: true,
-    },
-    {
-      id: 2,
-      title: "FAlR3 Takes Action:50kEAIR3 Airdrop for Users Affected by Bitget Incident",
-      description: "At FAIR3, our mission is to champion fairness through technology. We don’t just preach these values—we act on them.",
-      cover: BITGET_IMG,
-      enable: true,
-      selected: true,
-      homeSelected: false,
-    },
-  ] } = data || {};
+  const { data: events = [] } = data || {};
 
   const viewMore = () => {
     setCount((prev) => {
@@ -103,7 +72,6 @@ export default function EventPage() {
               <EventListItem
                 key={event.id}
                 id={event.id}
-                // @ts-expect-error fix when backend is ready
                 src={event.cover}
                 title={event.title}
                 description={event.description}

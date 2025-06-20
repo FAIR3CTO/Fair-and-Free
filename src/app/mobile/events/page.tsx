@@ -11,9 +11,6 @@ import { cn } from "@/lib/utils";
 import { fetcher } from "@/shared/fetcher";
 import { Button } from "@/components/ui/button";
 import type { EventResponse } from "@/shared/types";
-import FOURMEME_IMG from "../../../../public/images/fourmeme.png";
-import BITGET_IMG from "../../../../public/images/bitget.png";
-import AMA_IMG from "../../../../public/images/ama.png";
 
 // 移动端事件卡片组件
 function MobileEventCard({
@@ -31,25 +28,33 @@ function MobileEventCard({
     <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200/50 hover:shadow-lg transition-all duration-200">
       <Link href={`/foundation/justice-fund/${id}`}>
         <div className="w-full h-48 relative mb-4 rounded-lg overflow-hidden">
-          <Image
-            src={src}
-            fill
-            className="object-cover"
-            alt={title}
-          />
+          <Image src={src} fill className="object-cover" alt={title} />
         </div>
       </Link>
-      <h3 className={cn(titleStyle({ font: "kodchasan" }), "text-[16px] font-bold mb-2 line-clamp-2")}>
+      <h3
+        className={cn(
+          titleStyle({ font: "kodchasan" }),
+          "text-[16px] font-bold mb-2 line-clamp-2"
+        )}
+      >
         {title}
       </h3>
-      <p className={cn(normalTextStyle(), "text-[13px] text-[#64636A] leading-relaxed line-clamp-3 mb-4")}>
+      <p
+        className={cn(
+          normalTextStyle(),
+          "text-[13px] text-[#64636A] leading-relaxed line-clamp-3 mb-4"
+        )}
+      >
         {description}
       </p>
       <Button
         variant="outline"
         className="w-full rounded-lg border-[#9971FF] text-[#9971FF] hover:bg-[#9971FF]/10"
       >
-        <Link href={`/foundation/justice-fund/${id}`} className="text-[13px] font-medium">
+        <Link
+          href={`/foundation/justice-fund/${id}`}
+          className="text-[13px] font-medium"
+        >
           View Details
         </Link>
       </Button>
@@ -81,35 +86,7 @@ export default function MobileEventsPage() {
     fetcher
   );
 
-  const { data: events = [
-    {
-      id: 3,
-      title: "Who Owns Your Digital Memory?",
-      description: "A Fair3 AMA Recap: Digital Selves, AI Ethics, and the Reconfiguration of Power in Web3.",
-      cover: AMA_IMG,
-      enable: true,
-      selected: false,
-      homeSelected: true,
-    },
-    {
-      id: 1,
-      title: "Fair3 x Fourmeme: Meme for Justice, Fair for All",
-      description: `At Fair3, we believe that technology should be a tool for innovation, not a means for monopolies.`,
-      cover: FOURMEME_IMG,
-      enable: true,
-      selected: false,
-      homeSelected: true,
-    },
-    {
-      id: 2,
-      title: "FAlR3 Takes Action:50kEAIR3 Airdrop for Users Affected by Bitget Incident",
-      description: "At FAIR3, our mission is to champion fairness through technology. We don’t just preach these values—we act on them.",
-      cover: BITGET_IMG,
-      enable: true,
-      selected: true,
-      homeSelected: false,
-    },
-  ] } = data || {};
+  const { data: events = [] } = data || {};
 
   if (error) {
     return <></>;
@@ -119,7 +96,7 @@ export default function MobileEventsPage() {
     <div className="flex flex-col items-center text-[#353535] min-h-screen">
       <div className="w-full px-4 mt-6">
         <div className="w-full max-w-md mx-auto">
-          {/* {isLoading ? (
+          {isLoading ? (
             <MobileEventsSkeleton />
           ) : events.length === 0 ? (
             <div></div>
@@ -150,34 +127,7 @@ export default function MobileEventsPage() {
                 </div>
               )}
             </>
-          )} */}
-            <>
-              <div className="space-y-6">
-                {events.slice(0, count).map((event) => (
-                  <MobileEventCard
-                    key={event.id}
-                    id={event.id}
-                    // @ts-expect-error fix when backend is ready
-                    src={event.cover}
-                    title={event.title}
-                    description={event.description}
-                  />
-                ))}
-              </div>
-
-              {count < events.length && (
-                <div className="flex justify-center mt-8">
-                  <Button
-                    variant="outline"
-                    onClick={() => setCount((prev) => prev + 6)}
-                    className="flex items-center gap-2 border-[#9971FF] text-[#9971FF] hover:bg-[#9971FF]/10 rounded-full px-6 py-2"
-                  >
-                    <span className="text-[14px]">View More</span>
-                    <ChevronDown size={16} />
-                  </Button>
-                </div>
-              )}
-            </>
+          )}
         </div>
       </div>
     </div>
