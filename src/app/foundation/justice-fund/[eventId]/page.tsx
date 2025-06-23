@@ -12,7 +12,7 @@ export default async function EventDetailPage({
   const { eventId } = await params;
 
   return (
-    <div className="flex relative flex-col items-center ">
+    <div className="flex relative flex-col items-center overflow-x-hidden">
       <BackgroundBlur
         top={-525}
         right={-115}
